@@ -13,9 +13,6 @@ setup-job:
     - apt-get -y install npm sudo bash curl wget git gpg python3 xz-utils unzip zip
     - npm install --global n yarn npm@latest semver@latest
     - n 17
-    - rm -rf /usr/local/lib/node_modules
-    - rm -rf ~/.npm
-    - npm install --global n yarn npm@latest semver@latest
     - yarn install
 
 lint-job:
