@@ -18,6 +18,14 @@ setup-job:
 lint-job:
   stage: test
   script:
+    - echo "Setting up..."
+    - apt-get update
+    - export DEBIAN_FRONTEND=noninteractive
+    - export TZ=US/Pacific
+    - apt-get -y install npm sudo bash curl wget git gpg python3 xz-utils unzip zip
+    - npm install --global n yarn npm@latest semver@latest
+    - n 17
+    - yarn install
     - echo "Linting code... This will take about 10 seconds."
     - yarn lint
     - echo "No lint issues found."
@@ -25,6 +33,14 @@ lint-job:
 deploy-job:
   stage: deploy
   script:
+    - echo "Setting up..."
+    - apt-get update
+    - export DEBIAN_FRONTEND=noninteractive
+    - export TZ=US/Pacific
+    - apt-get -y install npm sudo bash curl wget git gpg python3 xz-utils unzip zip
+    - npm install --global n yarn npm@latest semver@latest
+    - n 17
+    - yarn install
     - echo "Deploying application..."
     - yarn build
     - echo "Application successfully deployed."
