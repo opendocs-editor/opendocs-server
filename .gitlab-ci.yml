@@ -8,7 +8,7 @@ setup-job:
   script:
     - echo "Setting up..."
     - apt-get update
-    - apt-get install npm
+    - apt-get -y install npm
     - npm install --global n
     - n 17
     - npm install --global yarn
