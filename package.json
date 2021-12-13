@@ -11,9 +11,9 @@
         "concurrently": "^6.4.0"
     },
     "scripts": {
-        "start": "concurrently \"cd server & yarn start\" \"cd client & yarn build & yarn start\"",
-        "test": "concurrently \"cd server & yarn test\" \"cd client & yarn dev\"",
-        "dev": "concurrently \"cd server & yarn test\" \"cd client & yarn build & yarn start\"",
+        "start": "concurrently \"cd server && yarn start\" \"cd client && yarn build & yarn start\"",
+        "test": "concurrently \"cd server && yarn test\" \"cd client && yarn dev\"",
+        "dev": "concurrently \"cd server && yarn test\" \"cd client && yarn build & yarn start\"",
         "lint": "cd client & yarn lint",
         "build": "cd client & yarn build"
     }
