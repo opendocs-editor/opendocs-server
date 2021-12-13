@@ -1,0 +1,21 @@
+{
+    "name": "opendocs",
+    "version": "1.0.0",
+    "description": "OpenDocs - A better WYSIWYG editor with custom fonts, collaboration, custom themes, and support for people with dyslexia.",
+    "main": "index.js",
+    "repository": "https://git.nosadnile.net/RedstoneWizard08/opendocs.git",
+    "author": "Jacob Sapoznikow <jacob1coder@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "start": "node index.js",
+        "test": "nodemon index.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "express-http-proxy": "^1.6.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
