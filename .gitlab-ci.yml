@@ -1,0 +1,29 @@
+stages:
+  - setup
+  - test
+  - deploy
+
+setup-job:
+  stage: setup
+  script:
+    - echo "Setting up..."
+    - apt-get update
+    - apt-get install npm
+    - npm install --global n
+    - n 17
+    - npm install --global yarn
+    - yarn install
+
+lint-job:
+  stage: test
+  script:
+    - echo "Linting code... This will take about 10 seconds."
+    - yarn lint
+    - echo "No lint issues found."
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - yarn build
+    - echo "Application successfully deployed."
