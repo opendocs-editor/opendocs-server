@@ -13,6 +13,7 @@ setup-job:
     - apt-get -y install npm sudo bash curl wget git gpg python3 xz-utils unzip zip
     - npm install --global n
     - n 17
+    - npm install --global npm@latest semver@latest
     - npm install --global yarn
     - yarn install
 
