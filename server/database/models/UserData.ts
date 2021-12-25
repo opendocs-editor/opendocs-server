@@ -72,7 +72,7 @@ export const schema = new mongoose.Schema({
     ],
 });
 
-const UserData = mongoose.model("PRS_UserData", schema);
+const UserData = mongoose.model("ODS_UserData", schema);
 console.log("[Model] Registered model: UserData.");
 
 export default UserData;

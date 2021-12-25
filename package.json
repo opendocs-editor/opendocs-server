@@ -1,9 +1,9 @@
 {
-  "name": "videotube",
+  "name": "opendocs",
   "version": "1.0.0",
-  "description": "VideoTube: A new and improved open-source video sharing platform.",
+  "description": "OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts.",
   "main": "index.js",
-  "repository": "https://git.nosadnile.net/nosadnile-network/videotube.git",
+  "repository": "https://git.nosadnile.net/RedstoneWizard08/opendocs.git",
   "author": "Jacob Sapoznikow <jacob1coder@gmail.com>",
   "license": "MIT",
   "private": false,

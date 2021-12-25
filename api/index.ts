@@ -16,11 +16,11 @@ const version = {
 };
 
 const app = express();
-const port = process.env.PORT || 4202;
+const port = process.env.PORT || 4502;
 
 const servlet = http.createServer(app);
 
-mongoose.connect("mongodb://localhost:27017/papyrus_v6_api_testing", {}, async (err) => {
+mongoose.connect("mongodb://localhost:27017/opendocs_api_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {
@@ -66,7 +66,7 @@ mongoose.connect("mongodb://localhost:27017/papyrus_v6_api_testing", {}, async (
                 } else {
                     res.status(200);
                     res.type("application/json");
-                    res.send(JSON.stringify({ version: { papyrus: { backend: version.backend, frontend: version.frontend, api: version.api }, database: version.database, node: version.node, npm: version.npm, yarn: version.yarn, tsc: version.typescript, "ts-node": version.ts_node, apache: version.httpd } }, null, 4));
+                    res.send(JSON.stringify({ version: { opendocs: { backend: version.backend, frontend: version.frontend, api: version.api }, database: version.database, node: version.node, npm: version.npm, yarn: version.yarn, tsc: version.typescript, "ts-node": version.ts_node, apache: version.httpd } }, null, 4));
                 }
             } else {
                 res.status(400);

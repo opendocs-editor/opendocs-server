@@ -7,8 +7,8 @@ const Error404: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Papyrus v6 | Error</title>
-        <meta name="description" content="Papyrus v6: Instant messaging - done right." />
+        <title>OpenDocs | Error</title>
+        <meta name="description" content="OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

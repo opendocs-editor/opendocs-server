@@ -5,16 +5,16 @@ import proxy from 'express-http-proxy';
 import mongoose from 'mongoose';
 
 const app = express();
-const port = process.env.PORT || 4400;
-const frontendPort = process.env.FRONTEND_PORT || 4401;
-const apiPort = process.env.API_PORT || 4402;
+const port = process.env.PORT || 4500;
+const frontendPort = process.env.FRONTEND_PORT || 4501;
+const apiPort = process.env.API_PORT || 4502;
 const frontend = proxy(`http://localhost:${frontendPort}`, {});
 const api = proxy(`http://localhost:${apiPort}`);
 
 const servlet = http.createServer(app);
 const io = new Server(servlet);
 
-mongoose.connect("mongodb://localhost:27017/papyrus_v6_testing", {}, async (err) => {
+mongoose.connect("mongodb://localhost:27017/opendocs_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {
@@ -29,7 +29,7 @@ mongoose.connect("mongodb://localhost:27017/papyrus_v6_testing", {}, async (err)
             console.log(`${socket.id} | Client connected!    | { id: ${socket.id}, ip: ${socket.handshake.address} }`);
             socket.on("request_data", () => {
                 const id = "61ba64ed142ea93ba3343990";
-                mongoose.model("PRS_UserData").findById(id, (err: string, doc: string) => {
+                mongoose.model("ODS_UserData").findById(id, (err: string, doc: string) => {
                     if(err) return console.error(err);
                     socket.emit("initialUserData", doc);
                 });

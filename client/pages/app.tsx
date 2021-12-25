@@ -52,7 +52,7 @@ var userData: UserData = {};
 
 const Home: NextPage = () => {
     var [ loading, setLoading ] = React.useState(true);
-    socket.on("initialUserData", (data) => {
+    socket.on("initialUserData", (data: UserData) => {
         userData = data;
         if(!userData.avatar || userData.avatar.toLowerCase() == "none" || userData.avatar.toLowerCase() == "false" || userData.avatar.toLowerCase() == "null") {
             userData.avatar = userData.username?.charAt(0);
@@ -67,8 +67,8 @@ const Home: NextPage = () => {
     return (
         <div className={styles.container}>
           <Head>
-            <title>Papyrus v6</title>
-            <meta name="description" content="Papyrus v6: Instant messaging - done right." />
+            <title>OpenDocs</title>
+            <meta name="description" content="OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts." />
             <link rel="icon" href="/favicon.ico" />
           </Head>
 

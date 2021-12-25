@@ -1,20 +1,21 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "Papyrus v6: Instant messaging - done right.",
+  "description": "OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts.",
   "main": "index.js",
-  "repository": "https://git.nosadnile.net/RedstoneWizard08/papyrus-v6.git",
+  "repository": "https://git.nosadnile.net/RedstoneWizard08/opendocs.git",
   "author": "Jacob Sapoznikow <jacob1coder@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "next dev -p 4401",
+    "dev": "next dev -p 4501",
     "build": "next build && next export",
-    "start": "next start -p 4401",
+    "start": "next start -p 4501",
     "lint": "next lint"
   },
   "dependencies": {
     "@next/react-refresh-utils": "^12.0.7",
+    "@types/socket.io-client": "^3.0.0",
     "axios": "^0.24.0",
     "next": "12.0.7",
     "react": "17.0.2",

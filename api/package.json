@@ -1,9 +1,9 @@
 {
-  "name": "papyrus-v6",
+  "name": "api",
   "version": "1.0.0",
-  "description": "Papyrus v6: Instant messaging - done right.",
+  "description": "OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts.",
   "main": "index.js",
-  "repository": "https://git.nosadnile.net/RedstoneWizard08/papyrus-v6.git",
+  "repository": "https://git.nosadnile.net/RedstoneWizard08/opendocs.git",
   "author": "Jacob Sapoznikow <jacob1coder@gmail.com>",
   "license": "MIT",
   "private": false,
