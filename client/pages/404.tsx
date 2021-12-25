@@ -1,26 +1,23 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import io from 'socket.io-client';
 import Link from 'next/link';
-import React from 'react';
 
-const Home: NextPage = () => {
-  React.useEffect(() => { window.location.replace("/app"); });
+const Error404: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Papyrus v6</title>
+        <title>Papyrus v6 | Error</title>
         <meta name="description" content="Papyrus v6: Instant messaging - done right." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.loader} />
+        <p className={styles.error}>404 | The page you requested could not be found.</p>
+        <Link href="/" passHref><p className={styles.error}>Back to Home</p></Link>
       </main>
     </div>
   );
 }
 
-export default Home;
+export default Error404;
