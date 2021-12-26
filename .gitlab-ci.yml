@@ -1,0 +1,87 @@
+default:
+  image: node:17.2.0
+  before_script:
+    - yarn install
+
+stages:
+  - test
+  - build
+
+lint-frontend:
+  stage: test
+  script:
+    - echo "Linting frontend..."
+    - cd client
+    - yarn lint
+    - cd ..
+    - echo "Done!"
+
+lint-backend:
+  stage: test
+  script:
+    - echo "Linting backend..."
+    - cd server
+    - yarn lint
+    - cd ..
+    - echo "Done!"
+
+lint-api:
+  stage: test
+  script:
+    - echo "Linting API..."
+    - cd api
+    - yarn lint
+    - cd ..
+    - echo "Done!"
+
+build-frontend:
+  stage: build
+  script:
+    - echo "Building frontend..."
+    - cd client
+    - yarn build
+    - apt update
+    - apt -y install zip unzip
+    - zip -r frontend-build-$CI_PIPELINE_ID.zip out
+    - cd ..
+    - echo "Done!"
+#  artifacts:
+#    paths:
+#      - client/frontend-build-*.zip
+  needs: ["lint-frontend"]
+
+build-backend:
+  stage: build
+  script:
+    - echo "Building backend..."
+    - cd server
+    - mkdir dist
+    - yarn build
+    - apt update
+    - apt -y install zip unzip
+    - zip -r backend-build-$CI_PIPELINE_ID.zip dist
+    - rm -rf dist
+    - cd ..
+    - echo "Done!"
+#  artifacts:
+#    paths:
+#      - server/backend-build-*.zip
+  needs: ["lint-backend"]
+
+build-api:
+  stage: build
+  script:
+    - echo "Building API..."
+    - cd api
+    - mkdir dist
+    - yarn build
+    - apt update
+    - apt -y install zip unzip
+    - zip -r api-build-$CI_PIPELINE_ID.zip dist
+    - rm -rf dist
+    - cd ..
+    - echo "Done!"
+#  artifacts:
+#    paths:
+#      - server/api-build-*.zip
+  needs: ["lint-api"]
