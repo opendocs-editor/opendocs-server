@@ -103,3 +103,5 @@ It will allow you to upload your own fonts, and your own pictures and assets to 
 - [ ] Cloud documents explorer
 - [ ] Export to Word, PDF, and image
 - [ ] Add-on API
+### Diagram
+![Roadmap Diagram](https://cdn.nosadnile.net/opendocs/roadmap_diagram.png)
