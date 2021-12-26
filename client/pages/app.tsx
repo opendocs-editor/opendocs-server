@@ -52,11 +52,19 @@ var userData: UserData = {};
 
 const Home: NextPage = () => {
     var [ loading, setLoading ] = React.useState(true);
-    socket.on("initialUserData", (data: UserData) => {
+    var [ loadSuccess, setLoadSuccess ] = React.useState(false);
+    socket.on("initialUserData", (data?: UserData) => {
+        if(!data) {
+            setLoadSuccess(false);
+            setLoading(false);
+            eval(`const notif = new Notification("Error", { body: "No user data found!" });`);
+            return;
+        }
         userData = data;
         if(!userData.avatar || userData.avatar.toLowerCase() == "none" || userData.avatar.toLowerCase() == "false" || userData.avatar.toLowerCase() == "null") {
             userData.avatar = userData.username?.charAt(0);
         }
+        setLoadSuccess(true);
         setLoading(false);
     });
     React.useEffect(() => {
@@ -77,7 +85,11 @@ const Home: NextPage = () => {
                 loading ? (
                     <div className={styles.loader} />
                 ) : (
-                    <h1 style={{ color: "white", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>Welcome back,&nbsp;<img src={`https://ui-avatars.com/api/?background=ff0000&color=ffffff&name=${userData.avatar}&format=svg&rounded=true&size=40&bold=true`} alt="Profile Picture" width={40} height={40} className={styles.ppic} />&nbsp;{userData.username}.</h1>
+                    loadSuccess ? (
+                        <h1 style={{ color: "white", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>Welcome back,&nbsp;<img src={`https://ui-avatars.com/api/?background=ff0000&color=ffffff&name=${userData.avatar}&format=svg&rounded=true&size=40&bold=true`} alt="Profile Picture" width={40} height={40} className={styles.ppic} />&nbsp;{userData.username}.</h1>
+                    ) : (
+                        <p style={{ color: "white", display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", fontWeight: "bold", fontSize: "18pt" }}>Error 500 | Oh no! User data not found!</p>
+                    )
                 )
             }
         </main>

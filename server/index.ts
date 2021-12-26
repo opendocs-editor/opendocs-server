@@ -8,13 +8,13 @@ const app = express();
 const port = process.env.PORT || 4500;
 const frontendPort = process.env.FRONTEND_PORT || 4501;
 const apiPort = process.env.API_PORT || 4502;
-const frontend = proxy(`http://localhost:${frontendPort}`, {});
-const api = proxy(`http://localhost:${apiPort}`);
+const frontend = proxy(`http://127.0.0.1:${frontendPort}`, {});
+const api = proxy(`http://127.0.0.1:${apiPort}`);
 
 const servlet = http.createServer(app);
 const io = new Server(servlet);
 
-mongoose.connect("mongodb://localhost:27017/opendocs_testing", {}, async (err) => {
+mongoose.connect("mongodb://127.0.0.1:27017/opendocs_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {
