@@ -10,7 +10,10 @@ Table of Contents
 
 ## About
 OpenDocs is a 100% open-source editor like Word and Google Docs that aims to support people with Dyslexia.\
-It does this through the availibility of custom fonts and typefaces
+It does this through the availibility of custom fonts and typefaces to make readibility easier.\
+OpenDocs will allow people to collaborate in real-time, as well as providing a desktop experience for PC, Mac, and Linux users.\
+OpenDocs aims to create an amazing experience for anyone, with special considerations taken into account for people with Dyslexia.\
+It will allow you to upload your own fonts, and your own pictures and assets to support your projects.
 
 ## Installation
 - Option 1 (Cloud-hosted):
