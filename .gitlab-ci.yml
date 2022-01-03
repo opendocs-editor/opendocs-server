@@ -44,10 +44,11 @@ build-frontend:
     - apt -y install zip unzip
     - zip -r frontend-build-$CI_PIPELINE_ID.zip out
     - cd ..
+    - mv client/*.zip .
     - echo "Done!"
-#  artifacts:
-#    paths:
-#      - client/frontend-build-*.zip
+  artifacts:
+    paths:
+      - frontend-build-*.zip
   needs: ["lint-frontend"]
 
 build-backend:
@@ -62,10 +63,11 @@ build-backend:
     - zip -r backend-build-$CI_PIPELINE_ID.zip dist
     - rm -rf dist
     - cd ..
+    - mv server/*.zip .
     - echo "Done!"
-#  artifacts:
-#    paths:
-#      - server/backend-build-*.zip
+  artifacts:
+    paths:
+      - backend-build-*.zip
   needs: ["lint-backend"]
 
 build-api:
@@ -80,8 +82,9 @@ build-api:
     - zip -r api-build-$CI_PIPELINE_ID.zip dist
     - rm -rf dist
     - cd ..
+    - mv api/*.zip .
     - echo "Done!"
-#  artifacts:
-#    paths:
-#      - server/api-build-*.zip
+  artifacts:
+    paths:
+      - api-build-*.zip
   needs: ["lint-api"]
