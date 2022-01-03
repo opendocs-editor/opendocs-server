@@ -3,18 +3,24 @@ import http from 'http';
 import { Server } from 'socket.io';
 import proxy from 'express-http-proxy';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const port = process.env.PORT || 4500;
 const frontendPort = process.env.FRONTEND_PORT || 4501;
 const apiPort = process.env.API_PORT || 4502;
-const frontend = proxy(`http://0.0.0.0:${frontendPort}`, {});
-const api = proxy(`http://0.0.0.0:${apiPort}`);
+const frontend = proxy(`http://localhost:${frontendPort}`, {});
+const api = proxy(`http://localhost:${apiPort}`);
 
 const servlet = http.createServer(app);
 const io = new Server(servlet);
 
-mongoose.connect("mongodb://0.0.0.0:27017/opendocs_testing", {}, async (err) => {
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+mongoose.connect("mongodb://localhost:27017/opendocs_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {
@@ -41,8 +47,11 @@ mongoose.connect("mongodb://0.0.0.0:27017/opendocs_testing", {}, async (err) => 
         // Routes
         app.get("/api", api);
         app.get("/api/*", api);
+        app.post("/api", api);
+        app.post("/api/*", api);
 
         app.get("/*", frontend);
+        app.post("/*", frontend);
     }
     servlet.listen(port, () => {
         console.log(`⚡️ [server] App listening on port ${port} (Frontend on port ${frontendPort}, API on port ${apiPort}).`);
