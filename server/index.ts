@@ -8,8 +8,8 @@ const app = express();
 const port = process.env.PORT || 4500;
 const frontendPort = process.env.FRONTEND_PORT || 4501;
 const apiPort = process.env.API_PORT || 4502;
-const frontend = proxy(`http://127.0.0.1:${frontendPort}`, {});
-const api = proxy(`http://127.0.0.1:${apiPort}`);
+const frontend = proxy(`http://0.0.0.0:${frontendPort}`, {});
+const api = proxy(`http://0.0.0.0:${apiPort}`);
 
 const servlet = http.createServer(app);
 const io = new Server(servlet);
