@@ -20,7 +20,7 @@ const port = process.env.PORT || 4502;
 
 const servlet = http.createServer(app);
 
-mongoose.connect("mongodb://127.0.0.1:27017/opendocs_api_testing", {}, async (err) => {
+mongoose.connect("mongodb://0.0.0.0:27017/opendocs_api_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {

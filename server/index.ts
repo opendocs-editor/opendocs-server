@@ -14,7 +14,7 @@ const api = proxy(`http://127.0.0.1:${apiPort}`);
 const servlet = http.createServer(app);
 const io = new Server(servlet);
 
-mongoose.connect("mongodb://127.0.0.1:27017/opendocs_testing", {}, async (err) => {
+mongoose.connect("mongodb://0.0.0.0:27017/opendocs_testing", {}, async (err) => {
     if(err) {
         console.log(err);
         app.get("*", (req, res) => {
