@@ -23,8 +23,7 @@ It will allow you to upload your own fonts, and your own pictures and assets to 
     4. Have fun!
 - Option 2 (Self-hosted):
     1. Clone this repository.
-        - Run `git clone https://git.nosadnile.net/RedstoneWizard08/opendocs.git -b refactor/use-template ~/opendocs`
-        - **(LEGACY)** Run `git clone https://git.nosadnile.net/RedstoneWizard08/opendocs.git -b legacy ~/opendocs-legacy`
+        - Run `git clone https://github.com/opendocs-editor/server.git`
     2. Open a terminal.
     3. Install NPM/Node.js and Yarn
         - Debian/Ubuntu/Kali Linux
@@ -81,7 +80,6 @@ It will allow you to upload your own fonts, and your own pictures and assets to 
             2. Run the installer. It should be the file `mongodb-windows-x86_64-5.0.5-signed.msi`.
     5. Move into the working directory.
         - Run `cd ~/opendocs`
-        - **(LEGACY)** Run `cd ~/opendocs-legacy`
     6. Install the dependencies.
         - Run `yarn install`
     7. Start the server.
