@@ -67,7 +67,7 @@ jobs:
           yarn build
           sudo apt update
           sudo apt -y install zip unzip
-          zip -r frontend-build-$GITHUB_JOB.zip dist
+          zip -r frontend-build-$GITHUB_JOB.zip out
           rm -rf dist
           cd ..
           mv client/*.zip .
