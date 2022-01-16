@@ -61,12 +61,18 @@ jobs:
       - run: yarn install
       - run: cd client
       - run: yarn build
-      - run: apt update
-      - run: apt -y install zip unzip
+      - run: sudo apt update
+      - run: sudo apt -y install zip unzip
       - run: zip -r frontend-build-$GITHUB_JOB.zip dist
       - run: rm -rf dist
       - run: cd ..
       - run: mv client/*.zip .
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: zip-archives
+          path: |
+            *.zip
   build-backend:
     runs-on: ubuntu-latest
     strategy:
@@ -82,12 +88,18 @@ jobs:
       - run: yarn install
       - run: cd server
       - run: yarn build
-      - run: apt update
-      - run: apt -y install zip unzip
+      - run: sudo apt update
+      - run: sudo apt -y install zip unzip
       - run: zip -r backend-build-$GITHUB_JOB.zip dist
       - run: rm -rf dist
       - run: cd ..
       - run: mv server/*.zip .
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: zip-archives
+          path: |
+            *.zip
   build-api:
     runs-on: ubuntu-latest
     strategy:
@@ -103,9 +115,15 @@ jobs:
       - run: yarn install
       - run: cd api
       - run: yarn build
-      - run: apt update
-      - run: apt -y install zip unzip
+      - run: sudo apt update
+      - run: sudo apt -y install zip unzip
       - run: zip -r api-build-$GITHUB_JOB.zip dist
       - run: rm -rf dist
       - run: cd ..
       - run: mv api/*.zip .
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: zip-archives
+          path: |
+            *.zip
