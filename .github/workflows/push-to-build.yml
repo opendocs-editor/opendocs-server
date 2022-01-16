@@ -13,9 +13,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd client
-      - run: yarn lint
+      - run: |
+          yarn install
+          cd client
+          yarn lint
   lint-backend:
     runs-on: ubuntu-latest
     strategy:
@@ -28,9 +29,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd server
-      - run: yarn lint
+      - run: |
+          yarn install
+          cd server
+          yarn lint
   lint-api:
     runs-on: ubuntu-latest
     strategy:
@@ -43,9 +45,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd api
-      - run: yarn lint
+      - run: |
+          yarn install
+          cd api
+          yarn lint
   build-frontend:
     runs-on: ubuntu-latest
     strategy:
@@ -58,15 +61,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd client
-      - run: yarn build
-      - run: sudo apt update
-      - run: sudo apt -y install zip unzip
-      - run: zip -r frontend-build-$GITHUB_JOB.zip dist
-      - run: rm -rf dist
-      - run: cd ..
-      - run: mv client/*.zip .
+      - run: |
+          yarn install
+          cd client
+          yarn build
+          sudo apt update
+          sudo apt -y install zip unzip
+          zip -r frontend-build-$GITHUB_JOB.zip dist
+          rm -rf dist
+          cd ..
+          mv client/*.zip .
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -85,15 +89,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd server
-      - run: yarn build
-      - run: sudo apt update
-      - run: sudo apt -y install zip unzip
-      - run: zip -r backend-build-$GITHUB_JOB.zip dist
-      - run: rm -rf dist
-      - run: cd ..
-      - run: mv server/*.zip .
+      - run: |
+          yarn install
+          cd server
+          yarn build
+          sudo apt update
+          sudo apt -y install zip unzip
+          zip -r backend-build-$GITHUB_JOB.zip dist
+          rm -rf dist
+          cd ..
+          mv server/*.zip .
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
@@ -112,15 +117,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - run: yarn install
-      - run: cd api
-      - run: yarn build
-      - run: sudo apt update
-      - run: sudo apt -y install zip unzip
-      - run: zip -r api-build-$GITHUB_JOB.zip dist
-      - run: rm -rf dist
-      - run: cd ..
-      - run: mv api/*.zip .
+      - run: |
+          yarn install
+          cd api
+          yarn build
+          sudo apt update
+          sudo apt -y install zip unzip
+          zip -r api-build-$GITHUB_JOB.zip dist
+          rm -rf dist
+          cd ..
+          mv api/*.zip .
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
