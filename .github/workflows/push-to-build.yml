@@ -1,0 +1,111 @@
+name: Build on Push
+on: [push]
+jobs:
+  lint-frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd client
+      - run: yarn lint
+  lint-backend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd server
+      - run: yarn lint
+  lint-api:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd api
+      - run: yarn lint
+  build-frontend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd client
+      - run: yarn build
+      - run: apt update
+      - run: apt -y install zip unzip
+      - run: zip -r frontend-build-$GITHUB_JOB.zip dist
+      - run: rm -rf dist
+      - run: cd ..
+      - run: mv client/*.zip .
+  build-backend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd server
+      - run: yarn build
+      - run: apt update
+      - run: apt -y install zip unzip
+      - run: zip -r backend-build-$GITHUB_JOB.zip dist
+      - run: rm -rf dist
+      - run: cd ..
+      - run: mv server/*.zip .
+  build-api:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [17.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: yarn install
+      - run: cd api
+      - run: yarn build
+      - run: apt update
+      - run: apt -y install zip unzip
+      - run: zip -r api-build-$GITHUB_JOB.zip dist
+      - run: rm -rf dist
+      - run: cd ..
+      - run: mv api/*.zip .
