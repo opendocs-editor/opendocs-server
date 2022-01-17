@@ -23,7 +23,7 @@ jobs:
           name: Build stuff
           command: |
             apt update
-            apt -y install sudo apt zip unzip
+            apt -y install sudo apt zip unzip curl wget
             apt -y upgrade
             curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
             apt install -y nodejs
