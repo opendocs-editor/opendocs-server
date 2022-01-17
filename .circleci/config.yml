@@ -22,11 +22,11 @@ jobs:
       - run:
           name: Build stuff
           command: |
-            apt-get update
-            apt-get -y install sudo apt zip unzip
-            apt-get -y upgrade
+            apt update
+            apt -y install sudo apt zip unzip
+            apt -y upgrade
             curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
-            apt-get install -y nodejs
+            apt install -y nodejs
             npm install --global yarn
             yarn install
             yarn build
