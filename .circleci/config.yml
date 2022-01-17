@@ -6,7 +6,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: node@17.3.1-buster
+      - image: node:17.3.1-buster
     steps:
       - checkout
       - run:
@@ -16,7 +16,7 @@ jobs:
             yarn lint
   build:
     docker:
-      - image: ubuntu@20.04
+      - image: ubuntu:focal
     steps:
       - checkout
       - run:
