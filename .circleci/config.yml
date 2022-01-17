@@ -24,6 +24,7 @@ jobs:
           command: |
             apt update
             apt -y install sudo apt zip unzip
+            npm install --global yarn
             yarn install
             yarn build
             zip -r frontend.zip client/out
