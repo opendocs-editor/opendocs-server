@@ -1,20 +1,38 @@
 {
-  "name": "opendocs",
+  "name": "@opendocs-editor/self-hosted",
   "version": "1.0.0",
-  "description": "OpenDocs: A WYSIWYG editor like Google Docs that supports Dyslexia, and as a bonus, custom fonts.",
   "main": "index.js",
-  "repository": "https://git.nosadnile.net/RedstoneWizard08/opendocs.git",
+  "repository": "https://github.com/opendocs-editor/server.git",
   "author": "Jacob Sapoznikow <jacob1coder@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "packageManager": "yarn@3.1.1",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "download": "^8.0.0",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
   "devDependencies": {
-    "concurrently": "^6.4.0"
+    "@node-minify/core": "^6.2.0",
+    "@node-minify/google-closure-compiler": "^6.2.0",
+    "@types/adm-zip": "^0.4.34",
+    "@types/download": "^8.0.1",
+    "@types/node": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "adm-zip": "^0.5.9",
+    "eslint": "^8.7.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "tar": "^6.1.11",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
   },
   "scripts": {
-    "start": "concurrently \"cd client && yarn start\" \"cd server && yarn start\" \"cd api && yarn start\"",
-    "test": "concurrently \"cd client && yarn dev\" \"cd server && yarn test\" \"cd api && yarn test\"",
-    "lint": "concurrently \"cd client && yarn lint\" \"cd server && yarn lint\" \"cd api && yarn lint\"",
-    "build": "cd client && yarn build && cd ../server && yarn build && cd ../api && yarn build",
-    "postinstall": "cd api && yarn install && cd ../client && yarn install && cd ../server && yarn install"
+    "format": "prettier --write .",
+    "lint": "eslint --ext .ts .",
+    "start": "ts-node src/index.ts"
   }
 }
